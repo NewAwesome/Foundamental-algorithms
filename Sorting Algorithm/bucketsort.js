@@ -4,6 +4,7 @@
  * @var buk:数组，表示桶
  * @function insert-sort:向桶内的数组插入多个数据时使用
  * @author:20190408————yf
+ * 桶数量自定义，当桶的数量等于待排序数组Length时，该排序时间复杂度最小空间复杂度最大。
  */
 function bucketSort(arr, n) {
   var buk = [],
