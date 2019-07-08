@@ -43,3 +43,4 @@ function insert(arr, value) {
 var arr = [17, 9, 23, 1, 5, 99];
 arr = bucketSort(arr, arr.length);
 console.log(arr);
+console.log(111);
