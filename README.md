@@ -1,3 +1,3 @@
 # Foundamental-algorithms
-Fundamental algorithms practicing. For my long-term career development.
-If you find out any mistakes, i'll be glad to see you point it out ! Thank you !
+Fundamental algorithms practicing.
+If you find out any mistakes, i'll be glad to see you to point it out ! Thank you !
