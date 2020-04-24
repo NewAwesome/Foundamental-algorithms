@@ -50,4 +50,6 @@ parseInt((3/2).toString()) = 1 ;
   [] empty array
   [1,3] [2,4] even
   [1,2] [3,4] even & medians respectively located at two arrays
+
+4. In the case [1,2] [3,4], it's important to deal with x,xp,y,yp because of they could be null(out of index of array), and one more thing is to deal with the even values of merged array, the median of even array should be (x + xp)/2.0, we will need to find not only leftPartEnd but also rightPartStart to complete the computing of median.
 ```

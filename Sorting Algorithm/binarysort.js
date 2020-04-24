@@ -1,3 +1,10 @@
+/*
+ * @Description:
+ * @Author: jiayufei
+ * @Date: 2019-12-25 23:17:07
+ * @LastEditors: jiayufei
+ * @LastEditTime: 2019-12-25 23:32:16
+ */
 function binaryInsertSort(arr, n) {
   for (var i = 1; i < n; i++) {
     // binary search
