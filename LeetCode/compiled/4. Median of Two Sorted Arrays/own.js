@@ -1,3 +1,11 @@
+"use strict";
+/*
+ * @Author: jiayufei
+ * @Date: 2020-05-03 17:19:21
+ * @LastEditors: jiayufei
+ * @LastEditTime: 2020-05-03 17:42:49
+ * @Description:
+ */
 var findMedianSortedArrays = function (arr1, arr2) {
     var A = arr1, B = arr2;
     // make sure we always search the shorter one
@@ -24,21 +32,30 @@ var findMedianSortedArrays = function (arr1, arr2) {
             aMin = aCount + 1;
         }
         else {
-            var leftPartEnd = x === null ? y : y === null ? x : Math.max(x, y);
+            // TODO: because of tslint, all we know the x&y can't all be null. But editor didnt know this, so assign -999, but the situation will never occur.
+            var leftPartEnd = x === null ? (y === null ? -999 : y) : y === null ? x : Math.max(x, y);
             // if total num is odd
-            if ((aLen + bLen) % 2 === 1) {
+            if (leftPartEnd && (aLen + bLen) % 2 === 1) {
                 return leftPartEnd;
             }
             // else if total num is even
-            var rightPartStart = xp === null ? yp : yp === null ? xp : Math.min(xp, yp);
+            var rightPartStart = xp === null
+                ? yp === null
+                    ? -999
+                    : yp
+                : yp === null
+                    ? xp
+                    : Math.min(xp, yp);
             return (leftPartEnd + rightPartStart) / 2.0;
         }
+        return undefined;
     }
+    return undefined;
 };
 var getLeftPartLength = function (len) {
     return Math.ceil(len / 2);
 };
 /* test case */
-console.log(findMedianSortedArrays([1, 3], [2]));
-console.log(findMedianSortedArrays([1, 2], [3, 4]));
+// console.log(findMedianSortedArrays([1, 3], [2]));
+// console.log(findMedianSortedArrays([1, 2], [3, 4]));
 console.log(findMedianSortedArrays([4, 20, 32, 50, 55, 61], [1, 15, 22, 30, 70]));

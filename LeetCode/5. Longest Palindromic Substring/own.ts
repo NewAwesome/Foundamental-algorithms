@@ -2,27 +2,30 @@
  * @Author: jiayufei
  * @Date: 2020-04-27 23:49:14
  * @LastEditors: jiayufei
- * @LastEditTime: 2020-04-28 00:21:10
+ * @LastEditTime: 2020-05-03 18:03:03
  * @Description: Bruce Force
  */
-const longestPalindrome: (str: String) => String = function (
-	str: String
-): String {
+const longestPalindrome: (str: string) => string = function (
+	str: string
+): string {
 	// arr & arr_rv(reversed)
-	const arr = str.split(''),
-		arr_rv = [...arr],
-		len = arr.length
+	const arr: string[] = str.split(''),
+		arr_rv: string[] = [...arr],
+		len: number = arr.length
 	arr_rv.reverse()
 
-	// two pointers
-	let res = []
+	let res: string[] = []
 
 	for (let idx_rv = 0; idx_rv < len; idx_rv++) {
 		for (let idx = 0; idx < len; idx++) {
-			let tempIdx = idx
-			let tempIdxRv = idx_rv
-			let tempRes = []
-			while (arr[tempIdx] === arr_rv[tempIdxRv]) {
+			let tempIdx: number = idx
+			let tempIdxRv: number = idx_rv
+			let tempRes: string[] = []
+			while (
+				tempIdx < len &&
+				tempIdxRv < len &&
+				arr[tempIdx] === arr_rv[tempIdxRv]
+			) {
 				tempRes.push(arr_rv[tempIdxRv])
 				tempIdx++
 				tempIdxRv++
@@ -37,6 +40,5 @@ const longestPalindrome: (str: String) => String = function (
 }
 
 /* test case */
-console.log(longestPalindrome('babad'))
-console.log(longestPalindrome('dabab'))
-console.log(longestPalindrome('cbbd'))
+// console.log(longestPalindrome('a'))
+console.log(longestPalindrome('aacdefcaa'))

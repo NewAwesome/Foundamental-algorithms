@@ -23,4 +23,6 @@ nums2 = [3, 4]
 
 Has a O(n^3) complexity.
 
+WRONG: Just longest common subsequence, rather than EXPECTED "palindrome substr"
+
 ## Approach 2 : xxxx
