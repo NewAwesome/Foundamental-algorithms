@@ -2,7 +2,7 @@
  * @Author: jiayufei
  * @Date: 2020-04-27 23:49:14
  * @LastEditors: jiayufei
- * @LastEditTime: 2020-05-03 18:03:03
+ * @LastEditTime: 2020-05-04 10:56:18
  * @Description: Bruce Force
  */
 const longestPalindrome: (str: string) => string = function (
@@ -30,7 +30,10 @@ const longestPalindrome: (str: string) => string = function (
 				tempIdx++
 				tempIdxRv++
 			}
-			if (tempRes.length > res.length) {
+			if (
+				tempRes.length > res.length &&
+				_isPalindrome(tempRes, [...tempRes].reverse())
+			) {
 				res = tempRes
 			}
 			tempRes = []
@@ -39,6 +42,21 @@ const longestPalindrome: (str: string) => string = function (
 	return res.join('')
 }
 
+const _isPalindrome: (
+	arr: Array<string>,
+	arr_rv: Array<string>
+) => boolean = function (arr: Array<string>, arr_rv: Array<string>): boolean {
+	if (arr.length === 1) {
+		return true
+	}
+	// loop arr & compare: Same index and same value.
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] !== arr_rv[i]) {
+			return false
+		}
+	}
+	return true
+}
 /* test case */
 // console.log(longestPalindrome('a'))
 console.log(longestPalindrome('aacdefcaa'))
