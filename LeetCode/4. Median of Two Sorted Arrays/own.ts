@@ -5,6 +5,9 @@
  * @LastEditTime: 2020-05-03 17:42:49
  * @Description:
  */
+
+type ArrItem = number|null
+
 const findMedianSortedArrays: (
 	arr1: Array<number>,
 	arr2: Array<number>
@@ -25,15 +28,15 @@ const findMedianSortedArrays: (
 	// computing the left part length of the sorted array
 	const leftPartLen: number = getLeftPartLength(aLen + bLen)
 	// computing the number range of values A could contribute
-	let [aMin, aMax] = [0, aLen]
+	let [aMin, aMax]:[number,number] = [0, aLen]
 	while (aMin <= aMax) {
-		let aCount = Math.ceil((aMax + aMin) / 2)
-		let bCount = leftPartLen - aCount
+		let aCount:number = Math.ceil((aMax + aMin) / 2)
+		let bCount:number = leftPartLen - aCount
 		// NOTE: Edge Case. The x||y||xp||yp possible not exist.
-		const x = aCount > 0 ? A[aCount - 1] : null,
-			y = bCount > 0 ? B[bCount - 1] : null,
-			xp = aCount < aLen ? A[aCount] : null,
-			yp = bCount < bLen ? B[bCount] : null
+		const x:ArrItem = aCount > 0 ? A[aCount - 1] : null,
+			y:ArrItem = bCount > 0 ? B[bCount - 1] : null,
+			xp:ArrItem = aCount < aLen ? A[aCount] : null,
+			yp:ArrItem = bCount < bLen ? B[bCount] : null
 		// NOTE: while x||yp not exist. stop compare, because 4>null equals true
 		if (x && yp && x > yp) {
 			aMax = aCount - 1
