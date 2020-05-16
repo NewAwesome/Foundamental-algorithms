@@ -2,7 +2,7 @@
  * @Author: jiayufei
  * @Date: 2020-05-04 11:48:50
  * @LastEditors: jiayufei
- * @LastEditTime: 2020-05-04 13:36:06
+ * @LastEditTime: 2020-05-05 12:24:44
  * @Description:
  -->
 
@@ -52,6 +52,75 @@ int count(TreeNode node, int sum) {
 ```
 
 ---
+
+**Q1：print a string in reverse order**
+
+0. End condition: `index > str.length-1`
+1. deal with str[1...n-1]
+2. deal with str[2...n-1]
+3. when `index = n-1`,then in next self-call it will execute `return`. Then the call stack back to upper which `index = n-1` and execute `print(str[n-1])`.
+
+```java
+private static void printReverse(char[] str) {
+  helper(0,str);
+}
+
+private static void helper(int index, char[] str) {
+  if(str == null || index >= str.length) {
+    return;
+  }
+  helper(index + 1, str);
+  System.out.print(str[index]);
+}
+```
+
+**Q1'：reverse a string in-place**
+
+### Approach 1: Recursive
+
+1. Assign two pointer, respectively head & tail
+2. if head >= tail, do nothing.
+3. otherwise, swap the value of head & tail pointer.
+
+```java
+class Solution {
+  public void helper(char[] str, int head, int tail) {
+    if(head>=tail){
+      return;
+    }
+    char temp = str[head];
+    str[head++] = str[tail];
+    str[tail--] = temp;
+    // recursive call
+    helper(str,head,tail)
+  }
+
+  public void reverseString(char[] str) {
+    helper(str,0,str.length-1)
+  }
+}
+Time: O(N) (N/2 times swap)
+Space: O(N)
+```
+
+### Approach 2: Double pointer
+
+```java
+class Solution {
+  public void reverseString(char[] str) {
+    int head = 0, tail = str.length - 1;
+    while(head < tail) {
+      char temp = str[head];
+      str[head++] = str[tail];
+      str[tail--] = temp;
+    }
+  }
+}
+Time: O(N)
+Space: O(1)
+```
+
+**Q2：两两交换链表中的节点**
 
 # Divide and Conquer (DAC)
 
