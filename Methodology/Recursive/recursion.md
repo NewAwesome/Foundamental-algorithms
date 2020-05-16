@@ -2,7 +2,7 @@
  * @Author: jiayufei
  * @Date: 2020-05-04 11:48:50
  * @LastEditors: jiayufei
- * @LastEditTime: 2020-05-05 12:24:44
+ * @LastEditTime: 2020-05-16 09:40:57
  * @Description:
  -->
 
@@ -15,6 +15,7 @@
 > https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/di-gui-xiang-jie#di-gui-xiang-jie
 
 ## Question1.
+
 ```c++
 /* 来源于 LeetCode PathSum III： https://leetcode.com/problems/path-sum-iii/ */
 root = [10,5,-3,3,2,null,11,3,-2,null,1],
@@ -51,6 +52,7 @@ int count(TreeNode node, int sum) {
 ```
 
 ## Question2. 两两交换链表节点
+
 ```
 Refer to : ../LeetCode/24. Swap Nodes in Pairs
 ```
@@ -124,7 +126,24 @@ Time: O(N)
 Space: O(1)
 ```
 
-**Q2：两两交换链表中的节点**
+**Q2：反转链表-递归**
+
+```java
+public ListNode reverseList(ListNode head) {
+  // Ending Case: head==null 空链表情况； head.next==null 结束条件，调用到了最后一个链表node
+  if( head==null || head.next==null ) {
+    // 发生在最高层栈内，直接return 原本链表的最后一个元素，且后续调用栈内皆是传递这个node
+    return head;
+  }
+  ListNode resultHead = reverseList(head.next);
+
+  // 递归处理。只关注当前node的下一个节点指向自己，且将自身next指针置空。
+  head.next.next = head;
+  head.next = null;
+
+  return resultHead;
+}
+```
 
 # Divide and Conquer (DAC)
 
