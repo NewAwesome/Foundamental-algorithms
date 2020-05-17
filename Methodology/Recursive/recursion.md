@@ -6,7 +6,7 @@
  * @Description:
  -->
 
-# Recursion
+# **Recursion**
 
 - 逆推
 - 寻找递归结束条件
@@ -14,7 +14,7 @@
 
 > https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/di-gui-xiang-jie#di-gui-xiang-jie
 
-## Question1.
+## **Question1.**
 ```c++
 /* 来源于 LeetCode PathSum III： https://leetcode.com/problems/path-sum-iii/ */
 root = [10,5,-3,3,2,null,11,3,-2,null,1],
@@ -50,14 +50,45 @@ int count(TreeNode node, int sum) {
 }
 ```
 
-## Question2. 两两交换链表节点
+## **Question2. 两两交换链表节点**
 ```
 Refer to : ../LeetCode/24. Swap Nodes in Pairs
 ```
-
 ---
+## **Question3. 杨辉三角**
+```
+Refer to : ../LeetCode/118. Pascal's Triangle
+```
+---
+## **Question4. Hanoi**
+```Python
+class Solution:
+    def hanota(self, A: [], B: [], C: []) -> None:
+        n = len(A[1])
+        self.move(n, A, B, C)
 
-# Divide and Conquer (DAC)
+    # A：origin盘  B：buffer盘  C：destination盘
+    def move(self, n, A, B, C):
+        if n == 1:
+            temp = A[1][-1]  # 打印变量
+            C[1].append(A[1][-1])
+            A[1].pop()
+            print(str(temp)+' move to '+C[0])
+            return
+        else:
+            # 通过缓冲区C盘将A盘上边n-1个秤砣移动到B盘
+            self.move(n-1, A, C, B)
+            # 将A盘最后一个移动到C盘
+            temp = A[1][-1]  # 打印变量
+            C[1].append(A[1][-1])
+            A[1].pop()
+            print(str(temp)+' move to '+C[0])
+            # 通过缓冲区A将B盘的n-1个秤砣移动到C盘
+            self.move(n-1, B, A, C)
+
+```
+
+# **Divide and Conquer (DAC)**
 
 - Divide
 - Conquer
