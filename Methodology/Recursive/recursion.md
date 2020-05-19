@@ -2,7 +2,7 @@
  * @Author: jiayufei
  * @Date: 2020-05-04 11:48:50
  * @LastEditors: jiayufei
- * @LastEditTime: 2020-05-16 09:40:57
+ * @LastEditTime: 2020-05-19 23:36:07
  * @Description:
  -->
 
@@ -14,7 +14,8 @@
 
 > https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/di-gui-xiang-jie#di-gui-xiang-jie
 
-## **Question1.**
+## **Question1. 二叉树给定路径和求满足的路径数**
+
 ```c++
 /* 来源于 LeetCode PathSum III： https://leetcode.com/problems/path-sum-iii/ */
 root = [10,5,-3,3,2,null,11,3,-2,null,1],
@@ -51,16 +52,38 @@ int count(TreeNode node, int sum) {
 ```
 
 ## **Question2. 两两交换链表节点**
+
 ```
 Refer to : ../LeetCode/24. Swap Nodes in Pairs
 ```
----
+
+## **Question2'. 反转链表-递归**
+
+```java
+public ListNode reverseList(ListNode head) {
+  // Ending Case: head==null 空链表情况； head.next==null 结束条件，调用到了最后一个链表node
+  if( head==null || head.next==null ) {
+    // 发生在最高层栈内，直接return 原本链表的最后一个元素，且后续调用栈内皆是传递这个node
+    return head;
+  }
+  ListNode resultHead = reverseList(head.next);
+
+  // 递归处理。只关注当前node的下一个节点指向自己，且将自身next指针置空。
+  head.next.next = head;
+  head.next = null;
+
+  return resultHead;
+}
+```
+
 ## **Question3. 杨辉三角**
+
 ```
 Refer to : ../LeetCode/118. Pascal's Triangle
 ```
----
+
 ## **Question4. Hanoi**
+
 ```Python
 class Solution:
     def hanota(self, A: [], B: [], C: []) -> None:
@@ -88,7 +111,7 @@ class Solution:
 
 ```
 
-**Q1：print a string in reverse order**
+## **Question5. 逆序打印字符串**
 
 0. End condition: `index > str.length-1`
 1. deal with str[1...n-1]
@@ -109,9 +132,9 @@ private static void helper(int index, char[] str) {
 }
 ```
 
-**Q1'：reverse a string in-place**
+## **Question6. 原地反转字符串**
 
-### Approach 1: Recursive
+### **Approach 1: Recursive**
 
 1. Assign two pointer, respectively head & tail
 2. if head >= tail, do nothing.
@@ -138,7 +161,7 @@ Time: O(N) (N/2 times swap)
 Space: O(N)
 ```
 
-### Approach 2: Double pointer
+### **Approach 2: Double pointer**
 
 ```java
 class Solution {
@@ -155,26 +178,50 @@ Time: O(N)
 Space: O(1)
 ```
 
-**Q2：反转链表-递归**
+---
+
+# **Recursion Memorization**
+
+斐波那契数列在计算 F(4)时的所有计算路径图示：
+![](https://leetcode-cn.com/explore/featured/card/recursion-i/258/memorization/Figures/recursion/fibonacci.png)
+通过记忆化消除重复计算：使用哈希表存储 F(n)的值作为缓存。
+
+## **Question1. Fibonacci**
 
 ```java
-public ListNode reverseList(ListNode head) {
-  // Ending Case: head==null 空链表情况； head.next==null 结束条件，调用到了最后一个链表node
-  if( head==null || head.next==null ) {
-    // 发生在最高层栈内，直接return 原本链表的最后一个元素，且后续调用栈内皆是传递这个node
-    return head;
+import java.util.HashMap;
+
+public class Main {
+  HashMap<Integer,Integer> cache = new HashMap<Integer,Integer>();
+
+  private int fib(int N){
+    if(cache.containKeys(N)){
+      return cache.get(N);
+    }
+    int result;
+    if(N < 2){
+      result = N;
+    } else {
+      result = fib(N-1) + fib(N-2);
+    }
+    // keep the result in cache
+    cache.put(N,result);
+    return result;
   }
-  ListNode resultHead = reverseList(head.next);
-
-  // 递归处理。只关注当前node的下一个节点指向自己，且将自身next指针置空。
-  head.next.next = head;
-  head.next = null;
-
-  return resultHead;
 }
 ```
 
-# Divide and Conquer (DAC)
+拓展：通过装饰者模式使得记忆化功能更加通用和非侵入性。（TODO:)
+
+> https://www.cnblogs.com/of-fanruice/p/11565679.html
+
+## **Question2. 爬楼梯**
+
+```
+Refer to : ../LeetCode/-1. Upstair
+```
+
+# **Divide and Conquer (DAC)**
 
 - Divide
 - Conquer
