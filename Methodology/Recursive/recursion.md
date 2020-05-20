@@ -2,7 +2,7 @@
  * @Author: jiayufei
  * @Date: 2020-05-04 11:48:50
  * @LastEditors: jiayufei
- * @LastEditTime: 2020-05-19 23:36:07
+ * @LastEditTime: 2020-05-20 23:58:36
  * @Description:
  -->
 
@@ -220,6 +220,57 @@ public class Main {
 ```
 Refer to : ../LeetCode/-1. Upstair
 ```
+
+---
+
+# **尾递归**
+
+Characteristic:
+
+- 递归函数 `xxFunc()` 中`return xxFunc();`，没有多余的计算。
+- 函数参数中带有 acc 累加器，用于统计求和作为最终结果返回，最终结果的 return 位置在递归链尾部（非尾递归则是需要走完递归调用返回链，到达最顶部之后 return 最终结果）
+- C/C++编译器支持尾递归优化，这为我们节省递归调用栈；Java、Python 不支持尾递归优化。
+
+```java
+尾递归/非尾递归计算数组求和（介绍思路，实际java并不支持）
+public class Main {
+
+  private static int helper_non_tail_recursion(int start, int [] ls) {
+    if (start >= ls.length) {
+      return 0;
+    }
+    // not a tail recursion because it does some computation after the recursive call returned.
+    return ls[start] + helper_non_tail_recursion(start+1, ls);
+  }
+
+  public static int sum_non_tail_recursion(int [] ls) {
+    if (ls == null || ls.length == 0) {
+      return 0;
+    }
+    return helper_non_tail_recursion(0, ls);
+  }
+
+  //---------------------------------------------
+
+  private static int helper_tail_recursion(int start, int [] ls, int acc) {
+    if (start >= ls.length) {
+      return acc;
+    }
+    // this is a tail recursion because the final instruction is the recursive call.
+    return helper_tail_recursion(start+1, ls, acc+ls[start]);
+  }
+
+  public static int sum_tail_recursion(int [] ls) {
+    if (ls == null || ls.length == 0) {
+      return 0;
+    }
+    return helper_tail_recursion(0, ls, 0);
+  }
+}
+
+```
+
+---
 
 # **Divide and Conquer (DAC)**
 
