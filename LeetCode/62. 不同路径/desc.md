@@ -2,26 +2,43 @@
 
 m\*n 棋盘格，初始人位于棋盘左上角，每次向下 or 向右移动一步，目标为达到右下格。
 
+1<=m, n<=100,保证答案个数小于等于2*10^9
+
+![](https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png)
+
 Example 1:
 
 ```
-nums1 = [1, 3]
-nums2 = [2]
+输入: m = 3, n = 2
+输出: 3
+解释:
+从左上角开始，总共有 3 条路径可以到达右下角。
 
-The median is 2.0
+1. 向右 -> 向右 -> 向下
+2. 向右 -> 向下 -> 向右
+3. 向下 -> 向右 -> 向右
 ```
 
 Example 2:
 
 ```
-nums1 = [1, 2]
-nums2 = [3, 4]
-
-The median is (2 + 3)/2 = 2.5
+输入: m = 7, n = 3
+输出: 28
 ```
 
 # Solution
 
-## Approach 1 : xxxx
+步骤：
+
+1. 定义 DP 数组的含义：DP[i][j]代表到达每个(i,j)位置总共的路径数
+2. --- 状态转移方程 ---
+
+- dp[i][j] = dp[i-1][j] + dp[i][j-1]
+
+3. 初始值
+
+- 由于robot仅能向右OR向下挪动。因此第一行和第一列每个位置的总路径数都为1
+
+## Approach 1 : DP
 
 ## Approach 2 : xxxx
