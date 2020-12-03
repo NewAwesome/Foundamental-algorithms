@@ -1,8 +1,8 @@
 <!--
  * @Author: jiayufei
  * @Date: 2020-05-04 11:48:50
- * @LastEditors: jiayufei
- * @LastEditTime: 2020-05-20 23:58:36
+ * @LastEditors  : jiayufei
+ * @LastEditTime : 2020-12-04 00:22:33
  * @Description:
  -->
 
@@ -11,6 +11,12 @@
 - 逆推
 - 寻找递归结束条件
 - 缩小问题规模，自我调用
+
+思路：
+
+1. end case
+2. return
+3. base case
 
 > https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/di-gui-xiang-jie#di-gui-xiang-jie
 
@@ -35,6 +41,10 @@ Return 3. The paths that sum to 8 are:
 2.  5 -> 2 -> 1
 3. -3 -> 11
 
+/**
+  pathSum
+  1. 二叉树经典递归法：分别处理左右子树以及root根节点
+*/
 int pathSum(TreeNode root, int sum) {
   // Ending condition
   if(root == null) return 0;
@@ -43,6 +53,9 @@ int pathSum(TreeNode root, int sum) {
         pathSum(root.left, sum) + pathSum(root.right, sum);
 }
 
+/**
+  count函数——计算以当前node为根节点出发的所有满足sum和为8的路径总数。
+*/
 int count(TreeNode node, int sum) {
   if(node == null) return 0;
   // Inside a tree, how many paths can sum to "int sum"?
@@ -58,6 +71,12 @@ Refer to : ../LeetCode/24. Swap Nodes in Pairs
 ```
 
 ## **Question2'. 反转链表-递归**
+
+【【【【 https://zhuanlan.zhihu.com/p/86745433 】】】】
+
+1. end case: node.next 为 null
+2. return:
+3. base case:
 
 ```java
 public ListNode reverseList(ListNode head) {
