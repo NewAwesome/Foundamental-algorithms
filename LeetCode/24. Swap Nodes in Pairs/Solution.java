@@ -1,3 +1,10 @@
+/*
+ * @Description  : 
+ * @Author       : jiayufei
+ * @Date         : 2020-09-21 08:04:14
+ * @LastEditors  : jiayufei
+ * @LastEditTime : 2020-12-03 23:01:20
+ */
 /* Linked list node DS */
 class ListNode {
   int val;
@@ -9,6 +16,12 @@ class ListNode {
 }
 
 public class Solution {
+  /**
+    等价关系式(抽象出来的元场景：list中的某两个node进行交换)
+      first->second.next; // first指向second.next(second.next是后一个元场景中的值，从而得出，我们需要在元场景中返回它的secondNode)
+      second.next->first; // second指向first
+      return second; // 最后返回secondNode
+   */
   public ListNode recursionSwap(ListNode head) {
     // edge case
     // Ending case
