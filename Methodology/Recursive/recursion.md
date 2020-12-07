@@ -75,8 +75,8 @@ Refer to : ../LeetCode/24. Swap Nodes in Pairs
 【【【【 https://zhuanlan.zhihu.com/p/86745433 】】】】
 
 1. end case: node.next 为 null
-2. return:
-3. base case:
+2. return: 因为反转链表的最后一个节点next需要值为null值，考虑返回当前节点并且当前节点的next置为null值
+3. base case: 尝试分离出base case————(current.next).next指向自己实现反转，current.next置空(反转只需要一步,自身的下一个指向自身即可实现链表后半部分反转，前面部分并不包括在本次base case中)
 
 ```java
 public ListNode reverseList(ListNode head) {
