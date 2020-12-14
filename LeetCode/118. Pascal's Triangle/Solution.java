@@ -9,9 +9,10 @@ class Solution{
     if(numRows==1){
       res.add(new ArrayList<>());
       res.get(0).add(1);
-      return res
+      return res;
     }
     // base case
+    res = RecursionSolution(numRows-1);
     List<Integer> row = new ArrayList<>();
     row.add(1);
     for(int i = 1;i < numRows - 1;i++){
@@ -24,6 +25,6 @@ class Solution{
   }
 
   public static void main(String[] args) {
-    
+    System.out.println('hello')
   }
 }

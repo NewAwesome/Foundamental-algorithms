@@ -130,6 +130,8 @@ class Solution:
 
 ```
 
+- Hanoi塔问题，要注意的是recursion递归处理需要“顾头顾尾”，迭代中不需要关注
+
 ## **Question5. 逆序打印字符串**
 
 0. End condition: `index > str.length-1`
