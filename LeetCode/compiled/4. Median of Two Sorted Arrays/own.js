@@ -32,7 +32,7 @@ var findMedianSortedArrays = function (arr1, arr2) {
             aMin = aCount + 1;
         }
         else {
-            // TODO: because of tslint, all we know the x&y can't all be null. But editor didnt know this, so assign -999, but the situation will never occur.
+            // because of tslint, all we know the x&y can't all be null. But editor didnt know this, so assign -999, but the situation will never occur.
             var leftPartEnd = x === null ? (y === null ? -999 : y) : y === null ? x : Math.max(x, y);
             // if total num is odd
             if (leftPartEnd && (aLen + bLen) % 2 === 1) {
