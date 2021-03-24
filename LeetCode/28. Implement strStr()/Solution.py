@@ -24,12 +24,8 @@ class Solution:
                 return i
         return -1
 
-    # Reference to my GRE Notes to implement KMP
-    def strStr2(self, haystack: str, needle: str) -> int:
-        # TODO: KMP
-        return 0
 
-    # Sunday 算法
+    # Sunday 算法 average:O(n); worst:O(mn) dict查找哈希表冲突时发生最坏情况
     # 1. 每次从 目标字符串中(haystack) 提取 待匹配字符串(target) 与 模式串(needle) 进行匹配：
     #     1.1 匹配则直接返回当前idx
     #     1.2 不匹配，则查看 target 在 haystack 中的后一位字符 c
