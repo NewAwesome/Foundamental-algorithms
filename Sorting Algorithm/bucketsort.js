@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: jiayufei
+ * @Date: 2021-02-01 18:03:46
+ * @LastEditors: jiayufei
+ * @LastEditTime: 2021-04-12 11:51:29
+ */
 /**
  * @var divisor:每个桶的范围/除数
  * @var bukNum:桶的数量
@@ -36,7 +43,8 @@ function bucketSort(arr, n) {
 function insert(arr, value) {
   arr.push(value);
   for (var i = arr.length - 2; i >= 0; i--) {
-    if (arr[i] > arr[i + 1]) arr[i] = [arr[i + 1], arr[i + 1] = arr[i]][0];
+    if (arr[i] > arr[i + 1]) 
+      arr[i] = [arr[i + 1], arr[i + 1] = arr[i]][0];
     else break;
   }
 }
